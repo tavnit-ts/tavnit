@@ -1,0 +1,19 @@
+AGENTS.md
+  s_b2abfa2fa38c60::t_2aa11dd972a03e 282
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f6361acccafc064a58643de7dbaafa59286b3c18",
+  "prompts": {},
+  "sessions": {
+    "s_b2abfa2fa38c60": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "343fdb45-b1fa-4de9-843e-aeb54e1247f0",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
