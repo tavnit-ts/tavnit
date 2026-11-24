@@ -1,0 +1,26 @@
+AI_DISCLOSURE.md
+  s_2bc639993cf02e::t_248ebd7c3eb612 1-51
+README.md
+  s_2bc639993cf02e::t_a02dd0c16748b1 15-18
+  s_2bc639993cf02e::t_f92860de0f0202 183
+AGENTS.md
+  s_2bc639993cf02e::t_1dfa9bcb250d68 15-20
+CONTRIBUTING.md
+  s_2bc639993cf02e::t_571a5e85ef7d49 34-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "66b05b9acb33b676e6f99f5e151c3addac14ea6a",
+  "prompts": {},
+  "sessions": {
+    "s_2bc639993cf02e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a872233b-193d-404a-94d6-b3180412eb4c",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
