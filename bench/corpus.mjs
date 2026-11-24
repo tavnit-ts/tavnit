@@ -11,7 +11,8 @@ export async function buildCorpus(dist) {
   const internal = await import(pathToFileURL(`${dist}/internal.js`).href).catch(() => tavnit);
   const { createCache, createEngine } = tavnit;
   const { parse, parseTextTemplate, parseValueTemplate } = internal;
-  const resolve = tavnit.resolve;
+  const host = await import(pathToFileURL(`${dist}/host.js`).href).catch(() => tavnit);
+  const resolve = host.resolve;
 
   // The default timeoutMs (100) is wall-clock: one GC pause or a loaded runner aborts a case, and a case with no
   // result fails the whole run. Every engine here raises it; it changes no case's cost.
