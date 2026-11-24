@@ -12,6 +12,10 @@ includes and layouts, and not a programming language: no statements, no recursio
 the host beyond the data and the filters you hand it. Requires Node 24 or later; ESM only; loads
 in a browser or an edge runtime.
 
+> **Written entirely with LLMs.** All code, tests and documentation in this repository are produced
+> by LLM coding agents under a maintainer who reviews and releases the result. See
+> [AI_DISCLOSURE.md](AI_DISCLOSURE.md).
+
 ## Installation
 
 ```bash
@@ -176,6 +180,7 @@ for the options and [CHANGELOG.md](CHANGELOG.md) for changes.
   templates, engine API, security model and error catalog. `pnpm run build` also
   concatenates it into `docs/UserGuide.md`.
 - [AGENTS.md](AGENTS.md) — contributor guide.
+- [AI_DISCLOSURE.md](AI_DISCLOSURE.md) — how LLMs are used in this project and what checks back the output.
 
 ## Contributing and security
 

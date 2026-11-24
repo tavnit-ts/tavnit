@@ -12,6 +12,12 @@ The user-facing reference for the language, its built-ins and the TypeScript API
 [`tavnit` skill](docs/skills/tavnit/SKILL.md); contributor design notes live in this file and the
 per-directory `src/**/AGENTS.md` files. Do not restate the skill here.
 
+## Authorship
+
+The whole repository is written by LLM agents, and [AI_DISCLOSURE.md](AI_DISCLOSURE.md) says so.
+Keep that statement true and tool-neutral: name no model or agent in it, and update it when how the
+project uses LLMs changes.
+
 ## Public and internal entry points
 
 `src/index.ts` is the public API and follows semver. Anything a tool built on Tavnit needs but an

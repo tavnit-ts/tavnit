@@ -31,6 +31,13 @@ benchmarks and the size gate. Each directory under `src/` has its own `AGENTS.md
 - A pull request that touches `src/` or `bench/` gets a benchmark comparison; see
   [docs/performance.md](docs/performance.md).
 
+## LLM-written contributions
+
+The project is written with LLMs ([AI_DISCLOSURE.md](AI_DISCLOSURE.md)), and a contribution from an
+agent is welcome on the same terms as one from a person. The submitter is responsible for the
+change: read it, run the checks above, and state in the pull request description when an LLM wrote
+a significant part of it. A commit trailer naming the tool is optional.
+
 ## Security
 
 Do not report a sandbox escape in a public issue; see [SECURITY.md](SECURITY.md).
