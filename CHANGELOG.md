@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- The package no longer ships `dist/.tsbuildinfo` (110 kB).
+
 ## 0.2.1
 
 No code changes. The first release published from GitHub Actions with a provenance statement.
