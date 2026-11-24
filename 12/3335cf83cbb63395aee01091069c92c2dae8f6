@@ -1,0 +1,19 @@
+CHANGELOG.md
+  s_d7ca59df864df6::t_5663bbf7ed0c99 3-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "123335cf83cbb63395aee01091069c92c2dae8f6",
+  "prompts": {},
+  "sessions": {
+    "s_d7ca59df864df6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "83ca1d5c-d4f2-443c-8a4c-4c96d76fcd4b",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
