@@ -2,7 +2,7 @@
 
 ## 0.2.0
 
-The first release as `@tavnit-ts/tavnit`. Earlier versions were published as `@peula-ts/tavnit` (0.1.x); the
+The first release as `@tavnit-ts/tavnit`. Earlier versions were published under another name (0.1.x); the
 list below is what changed since 0.1.x.
 
 ### Removed
@@ -14,7 +14,7 @@ list below is what changed since 0.1.x.
 ### Breaking
 
 - **Breaking, in strict mode:** `?.` is an optional access. `x?.key` and `x?.[k]` read `null` when `x` is `null`, when `x` is a name that is not in the context, and when `x` is an object without that key. Any value behind `?.` (an array, a string, a number, a boolean) that lacks the property reads `null` too. A plain `.` stays an error. A typo behind `?.` is no longer reported; use `.` where the key must exist.
-- **Breaking:** `strict: true` and `divisionByZero: "error"` are the defaults. A name that is not in the context, a field the value does not have, a property of a type that has none (`a.length` on an array) and `1 / 0` raise an `ExpressionError` instead of reading as `null` or `Infinity`. Migration: fix the template (`size(a)`, `x ?? default`, a guard before a division), or keep the old reading with `createEngine({ strict: false })` (and `divisionByZero: "infinity"` for a strict engine that divides by zero). Dependents set `strict` explicitly first; `@peula-ts/parser` sets `strict: false` for the ADF modules until they read strict-clean, and `@tavnit-ts/tavnit-template` defaults the engine node's `strict` to `true`.
+- **Breaking:** `strict: true` and `divisionByZero: "error"` are the defaults. A name that is not in the context, a field the value does not have, a property of a type that has none (`a.length` on an array) and `1 / 0` raise an `ExpressionError` instead of reading as `null` or `Infinity`. Migration: fix the template (`size(a)`, `x ?? default`, a guard before a division), or keep the old reading with `createEngine({ strict: false })` (and `divisionByZero: "infinity"` for a strict engine that divides by zero).
 - **Breaking:** `engine.parseTextTemplate()` returns an opaque `TextTemplate` (exported from the root entry point) in place of an array of internal nodes. A tool that walks the nodes reads `template.nodes` and passes it to `textTemplateExpressions` from `@tavnit-ts/tavnit/internal`.
 - **Breaking:** `timeoutMs` has no default any more. It was a 100 ms wall-clock limit, so the same template passed on an idle machine and failed on a loaded one. A host that wants the guard sets it (`createEngine({ timeoutMs: 100 })`). The deterministic budgets replace it: the new `maxSteps` (default 10 000 000 expression nodes per engine call) and `maxIterations`.
 - **Breaking:** the unit of `maxIterations` is the engine call, and its default is 1 000 000 (was 10 000 per expression). One `evaluate`, `render` or `renderObject` call has one iteration budget, shared by the collection built-ins, the `${% for %}` loops, all spans of a template and all leaves of a value tree. A `map` over 100 000 items now passes by default.
