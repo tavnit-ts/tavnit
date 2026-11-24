@@ -151,7 +151,7 @@ function randomString(v: Value, charset: Value = null): Value {
   let result = "";
   while (result.length < v) {
     for (const word of new Uint32Array(randomBytes((v - result.length) * 4).buffer)) {
-      if (word < limit && result.length < v) result += cs[Math.floor(word / span)];
+      if (word < limit) result += cs[Math.floor(word / span)];
     }
   }
   return result;

@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it, vi } from "vitest";
 import { createEngine } from "../engine/engine.js";
 import { ExpressionError } from "../engine/types.js";
 import { resolve } from "../evaluator/types.js";
@@ -24,6 +24,20 @@ describe("non-finite numbers are rejected by the conversion built-ins", () => {
 
 describe("randomString()", () => {
   it("rejects a charset that is not a string", async () => failsWith(run("randomString(4, 5)"), "charset must be a string"));
+  it("drops words from the biased tail and draws again", async () => {
+    // 3 characters: span = floor(2^32 / 3) = 1431655765, limit = 4294967295, so 0xFFFFFFFF is rejected.
+    const words = [[0xffffffff, 0, 1431655765], [2863311530]];
+    const spy = vi.spyOn(globalThis.crypto, "getRandomValues").mockImplementation(((a: Uint32Array | Uint8Array) => {
+      const next = words.shift() ?? [];
+      new Uint32Array(a.buffer).set(next);
+      return a;
+    }) as never);
+    try {
+      expect(await run('randomString(4, "abc")')).toBe("abac");
+    } finally {
+      spy.mockRestore();
+    }
+  });
 });
 
 describe("find() — async mode", () => {
