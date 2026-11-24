@@ -1,6 +1,6 @@
 {
   "name": "@tavnit-ts/tavnit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Constrained expression evaluator with text-embedding and value templates",
   "homepage": "https://github.com/tavnit-ts/tavnit#readme",
   "bugs": {

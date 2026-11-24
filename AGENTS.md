@@ -258,4 +258,9 @@ Engine gaps and deferred decisions.
 | Collection null-input table | `errors.md` states the rule (only `size(null)` returns `0`); a per-function table is missing. |
 | Top-level function value | `language.md` calls a lambda as an expression result a type error; `evaluate("x => x")` returns it, only a rendered span rejects it. Align the doc or the engine. |
 | BigInt | Numbers are IEEE doubles; an integer above 2^53 loses precision silently. Documented in `language.md`, not handled. |
+| Membership and objects | `"a" in o` on an object raises; there is no `has(o, k)`, `entries`, `fromEntries` or `mapValues`, and no object or array spread or computed key in an expression. Decide the meaning of `k in obj` and the expression spread (it must agree with the value templates), then add the built-ins through [Adding a New Builtin](src/builtins/AGENTS.md#adding-a-new-builtin). |
+| One rule for `null` | `size(null)` is `0`, but `trim(null)`, `toUpperCase(null)`, `map(null)` and `join(null)` raise. Pick one rule with the per-function table above and decide `\|?` with it; say in `embedding.md` that a span with `null` renders `""`. |
+| Comparison pages | `docs/skills/tavnit/references/other-engines.md` compares Liquid only; add CEL, JEXL and JSONata, and verify every row by running the expression. |
+| Benchmark gate | The pull-request benchmark comments only. Set the repository variable `TAVNIT_BENCH_ENFORCE` to `true` after two weeks of reports from real pull requests; the nightly memory job needs seven days without a false failure. |
+| Fresh install check | A check that a new project installs the published package and imports every entry point. |
 | Doc-style nits | `reduce()` accumulator note, precedence callout formatting, signature optionality. |

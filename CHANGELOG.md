@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.2
 
 - The package no longer ships `dist/.tsbuildinfo` (110 kB).
 
