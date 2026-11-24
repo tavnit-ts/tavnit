@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_d7ca59df864df6::t_e39fd1a56c970d 5,17
+.github/workflows/publish.yml
+  s_d7ca59df864df6::t_e39fd1a56c970d 20,47-55
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "dc3c46ff6a786cfdd924ce773a844ae84df0004e",
+  "prompts": {},
+  "sessions": {
+    "s_d7ca59df864df6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "83ca1d5c-d4f2-443c-8a4c-4c96d76fcd4b",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
