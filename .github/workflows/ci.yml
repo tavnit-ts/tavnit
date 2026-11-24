@@ -50,3 +50,9 @@ jobs:
       - name: Size gate
         if: matrix.node == 24
         run: pnpm run size
+
+      # The packed tarball, as `npm publish` would send it: publint on package.json against the files,
+      # attw on how TypeScript resolves every entry point (scripts/check-package.mjs).
+      - name: Package check
+        if: matrix.node == 24
+        run: pnpm run check:package

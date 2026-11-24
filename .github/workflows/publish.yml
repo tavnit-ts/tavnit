@@ -42,6 +42,9 @@ jobs:
           pnpm run build
           pnpm run test
 
+      - name: Check the packed tarball
+        run: pnpm run check:package
+
       - name: Publish
         run: npm publish --provenance --access public
 

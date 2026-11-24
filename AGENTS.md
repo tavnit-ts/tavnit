@@ -75,6 +75,7 @@ A reference example that claims a behaviour is asserted in `src/engine/skill-doc
 scripts/build-docs.mjs   — checks the skill and generates docs/UserGuide.md (see STRUCTURE.md)
 scripts/gen-builtin-names.mjs — writes src/builtins/names.ts from the categories in dist/
 scripts/check-size.mjs   — the size gate (see Size); scripts/size-ceilings.json holds the ceilings
+scripts/check-package.mjs — the package check (see Package check): publint and attw over the packed tarball
 docs/skills/tavnit/      — the user-facing skill: SKILL.md, STRUCTURE.md, references/
 docs/                    — generated UserGuide.md and design notes (docs/AGENTS.md)
 bench/                   — the benchmark corpus and its runners; outside src/, so never built or published (see Benchmarks)
@@ -230,6 +231,24 @@ keep the lean bundles lean:
 
 A Metro (React Native) bundle is not part of the gate: Metro is not installed.
 
+## Package check
+
+`exports` maps 14 entry points by hand to files in `dist/`, so a wrong path or a misplaced condition passes
+lint, build and test and fails only for a user, after an irreversible publish. `scripts/check-package.mjs`
+(`pnpm run check:package`, which runs `tsc` first) packs the package as `npm publish` would and lints the
+tarball, not the working tree:
+
+- **publint** (`--strict`, so a warning fails) checks `package.json` against the packed files: every path in
+  `main`, `types` and `exports` exists, the condition order is valid, `files` leaves nothing out.
+- **attw** (`@arethetypeswrong/cli`, profile `esm-only`) resolves the types of every entry point as
+  `node16` from ESM and as `bundler`. The profile ignores the CommonJS and `node10` columns because the package
+  ships ESM only; a `require` of an entry point is not a supported use.
+
+`pnpm run check` ends with it, `.github/workflows/ci.yml` runs it on Node 24 and `publish.yml` runs it before
+`npm publish`. A new entry point goes in `exports` with a `types` condition first, and this check must stay
+green. Both tools are pinned to an exact version in `devDependencies`: a new rule in either would otherwise
+fail a release that did not change.
+
 ## Playground
 
 `playground/index.html` is a static page: an expression or a text template, a JSON context and a `strict`
@@ -262,5 +281,5 @@ Engine gaps and deferred decisions.
 | One rule for `null` | `size(null)` is `0`, but `trim(null)`, `toUpperCase(null)`, `map(null)` and `join(null)` raise. Pick one rule with the per-function table above and decide `\|?` with it; say in `embedding.md` that a span with `null` renders `""`. |
 | Comparison pages | `docs/skills/tavnit/references/other-engines.md` compares Liquid only; add CEL, JEXL and JSONata, and verify every row by running the expression. |
 | Benchmark gate | The pull-request benchmark comments only. Set the repository variable `TAVNIT_BENCH_ENFORCE` to `true` after two weeks of reports from real pull requests; the nightly memory job needs seven days without a false failure. |
-| Fresh install check | A check that a new project installs the published package and imports every entry point. |
+| Fresh install check | A check that a new project installs the published package and imports every entry point. The package check lints the tarball but never runs it. |
 | Doc-style nits | `reduce()` accumulator note, precedence callout formatting, signature optionality. |

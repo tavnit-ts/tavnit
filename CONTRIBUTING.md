@@ -13,6 +13,7 @@ pnpm run lint
 pnpm run build        # tsc, then checks the skill and writes docs/UserGuide.md
 pnpm run test
 pnpm run test:coverage   # the package holds 100% coverage
+pnpm run check:package   # publint and attw over the packed tarball (a change to exports or the build)
 ```
 
 [AGENTS.md](AGENTS.md) is the contributor guide: layout, error conventions, how to add a built-in, the

@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+No change to the package. CI and the publish workflow now lint the packed tarball with publint and
+`@arethetypeswrong/cli` before a release.
+
 ## 0.2.2
 
 - The package no longer ships `dist/.tsbuildinfo` (110 kB).
