@@ -1,0 +1,333 @@
+biome.json
+  s_d7ca59df864df6::t_984e78a1f60845 1-18
+scripts/build-docs.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-361
+docs/performance.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-120
+src/builtins/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-111
+src/temporal.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-32
+docs/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-11
+src/engine/sync.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-218
+CHANGELOG.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-61
+docs/template-syntax-options.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-73
+.github/pull_request_template.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-7
+src/typecheck/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-46
+src/api-snapshot.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-14
+src/builtins/category.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-19
+src/engine/integration.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-578
+docs/skills/tavnit/references/errors.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-309
+scripts/check-size.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-119
+AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-255
+src/engine/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-100
+src/index.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-46
+src/lexer/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-64
+src/evaluator/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-126
+package.json
+  s_d7ca59df864df6::t_984e78a1f60845 1-141
+.github/workflows/ci.yml
+  s_d7ca59df864df6::t_984e78a1f60845 1-52
+CONTRIBUTING.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-40
+src/engine/engine.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-2447
+src/evaluator/types.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-398
+.github/workflows/bench-nightly.yml
+  s_d7ca59df864df6::t_984e78a1f60845 1-43
+bench/corpus.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-247
+docs/skills/tavnit/references/typescript-api.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-1170
+scripts/gen-builtin-names.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-27
+README.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-187
+docs/skills/tavnit/references/intro.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-158
+src/engine/types.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-245
+src/index.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-49
+.github/workflows/publish.yml
+  s_d7ca59df864df6::t_984e78a1f60845 1-46
+.github/workflows/bench.yml
+  s_d7ca59df864df6::t_984e78a1f60845 1-98
+bench/memory.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-115
+.gitignore
+  s_d7ca59df864df6::t_984e78a1f60845 1-8
+.github/ISSUE_TEMPLATE/config.yml
+  s_d7ca59df864df6::t_984e78a1f60845 1-5
+.github/ISSUE_TEMPLATE/bug_report.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-21
+.github/dependabot.yml
+  s_d7ca59df864df6::t_984e78a1f60845 1-13
+src/entry-points.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-138
+src/core.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-45
+vitest.config.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-15
+src/internal.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-97
+src/api.test-d.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-97
+src/host.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-14
+src/builtins/regex.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-141
+src/engine/engine.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-740
+src/core-engine.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-14
+src/performance.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-121
+bench/noise.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-52
+SECURITY.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-27
+bench/run.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-50
+src/engine/context.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-213
+src/builtins/builtins.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-1684
+bench/ab.mjs
+  s_d7ca59df864df6::t_984e78a1f60845 1-96
+src/engine/skill-docs.test.ts
+  s_d7ca59df864df6::t_984e78a1f60845 1-517
+docs/skills/tavnit/STRUCTURE.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-32
+src/parser/AGENTS.md
+  s_d7ca59df864df6::t_984e78a1f60845 1-41
+LICENSE
+  s_d7ca59df864df6::t_fce8fdad32ad07 1-15
+docs/skills/tavnit/SKILL.md
+  s_d7ca59df864df6::t_ce82c5df9e8988 1-110
+docs/skills/tavnit/references/block-tags.md
+  s_d7ca59df864df6::t_0c19f46d22a913 1-152
+docs/skills/tavnit/references/builtins-collections.md
+  s_d7ca59df864df6::t_49417740e3d5b6 1-217
+docs/skills/tavnit/references/builtins-objects.md
+  s_d7ca59df864df6::t_7e4f47d43215b4 1-161
+docs/skills/tavnit/references/builtins-strings.md
+  s_d7ca59df864df6::t_5dc8fbecf8e528 1-141
+docs/skills/tavnit/references/builtins-types.md
+  s_d7ca59df864df6::t_ea89d3204ad916 1-222
+docs/skills/tavnit/references/builtins.md
+  s_d7ca59df864df6::t_d5fa28429c155d 1-133
+docs/skills/tavnit/references/datetime.md
+  s_d7ca59df864df6::t_cecc192c1fb651 1-286
+docs/skills/tavnit/references/embedding.md
+  s_d7ca59df864df6::t_a659e9da0a71a4 1-285
+docs/skills/tavnit/references/language.md
+  s_d7ca59df864df6::t_a8146d69f968d4 1-760
+docs/skills/tavnit/references/other-engines.md
+  s_d7ca59df864df6::t_ea586d6b6390af 1-139
+docs/skills/tavnit/references/security.md
+  s_d7ca59df864df6::t_c2a226a7fe8d71 1-225
+docs/skills/tavnit/references/value-templates.md
+  s_d7ca59df864df6::t_7f69514c14d39f 1-236
+playground/build.mjs
+  s_d7ca59df864df6::t_390cbc54abeae3 1-17
+playground/index.html
+  s_d7ca59df864df6::t_c989c266d3222d 1-77
+pnpm-lock.yaml
+  s_d7ca59df864df6::t_4761f9b2193925 1-1374
+scripts/size-ceilings.json
+  s_d7ca59df864df6::t_a2fd588dea352d 1-28
+src/__snapshots__/api-snapshot.test.ts.snap
+  s_d7ca59df864df6::t_07961eda21673e 1-70
+src/builtins/args.ts
+  s_d7ca59df864df6::t_52a1500b170615 1-20
+src/builtins/collections.ts
+  s_d7ca59df864df6::t_1e4d667da702a5 1-753
+src/builtins/coverage-gaps.test.ts
+  s_d7ca59df864df6::t_eda170a5f3646b 1-82
+src/builtins/crypto.ts
+  s_d7ca59df864df6::t_77462d2c939617 1-161
+src/builtins/datetime.test.ts
+  s_d7ca59df864df6::t_68a90c4177f483 1-966
+src/builtins/datetime.ts
+  s_d7ca59df864df6::t_8c832d88790710 1-623
+src/builtins/encoding.ts
+  s_d7ca59df864df6::t_1a9e8f5d3f297c 1-79
+src/builtins/higher-order.test.ts
+  s_d7ca59df864df6::t_feb81615d23806 1-793
+src/builtins/limits.ts
+  s_d7ca59df864df6::t_f48edb192bf155 1-15
+src/builtins/linear-regex.ts
+  s_d7ca59df864df6::t_0102e85e3d748e 1-111
+src/builtins/math.ts
+  s_d7ca59df864df6::t_bb1fa39d825f44 1-68
+src/builtins/names.test.ts
+  s_d7ca59df864df6::t_cd3ee431e755d4 1-15
+src/builtins/names.ts
+  s_d7ca59df864df6::t_d64e8baa9e41ae 1-120
+src/builtins/null-safety.ts
+  s_d7ca59df864df6::t_d6f6b3352a2317 1-57
+src/builtins/objects.ts
+  s_d7ca59df864df6::t_d12c3136d882c9 1-80
+src/builtins/parse.ts
+  s_d7ca59df864df6::t_08bf95852a7727 1-82
+src/builtins/serialise.ts
+  s_d7ca59df864df6::t_24886537ea7f0b 1-9
+src/builtins/strings.ts
+  s_d7ca59df864df6::t_df891f2ab93c77 1-195
+src/builtins/type.ts
+  s_d7ca59df864df6::t_7ef381ed2854dc 1-121
+src/builtins/yaml.ts
+  s_d7ca59df864df6::t_f44df343ae82b2 1-10
+src/categories/collections.ts
+  s_d7ca59df864df6::t_d7bfcfa3a20fac 1-10
+src/categories/crypto.ts
+  s_d7ca59df864df6::t_4377c09c4bd9a4 1-10
+src/categories/datetime.ts
+  s_d7ca59df864df6::t_7cf9f4e7520fbf 1-10
+src/categories/encoding.ts
+  s_d7ca59df864df6::t_8573504de63493 1-10
+src/categories/index.ts
+  s_d7ca59df864df6::t_cf0a6f75671a03 1-21
+src/categories/objects.ts
+  s_d7ca59df864df6::t_3ca5f342b6e6e2 1-12
+src/categories/regex.ts
+  s_d7ca59df864df6::t_9f20e61f245b1c 1-10
+src/categories/strings.ts
+  s_d7ca59df864df6::t_45719a51ca3fbe 1-10
+src/categories/types.ts
+  s_d7ca59df864df6::t_1ae33442a3282e 1-16
+src/categories/yaml.ts
+  s_d7ca59df864df6::t_55ca2527622f53 1-10
+src/defaults.ts
+  s_d7ca59df864df6::t_2e8c40e68c930f 1-19
+src/engine/analyze.test.ts
+  s_d7ca59df864df6::t_4e85d0f5b6383d 1-142
+src/engine/analyze.ts
+  s_d7ca59df864df6::t_9dd5a7f3d72c2a 1-155
+src/engine/cache.ts
+  s_d7ca59df864df6::t_e65a58defa3696 1-113
+src/engine/diagnostics.test.ts
+  s_d7ca59df864df6::t_20e3a21edfa87b 1-146
+src/engine/format.test.ts
+  s_d7ca59df864df6::t_b2d399edfbb705 1-196
+src/engine/format.ts
+  s_d7ca59df864df6::t_2e4570dfb12a16 1-59
+src/engine/limits.test.ts
+  s_d7ca59df864df6::t_23b02aed8274f2 1-148
+src/engine/routing.test.ts
+  s_d7ca59df864df6::t_d3e0bce1c3ceeb 1-101
+src/engine/strict.test.ts
+  s_d7ca59df864df6::t_fa5a308d965e53 1-276
+src/evaluator/errors.ts
+  s_d7ca59df864df6::t_1c56c645ad7b23 1-99
+src/evaluator/evaluate.ts
+  s_d7ca59df864df6::t_13f65cd79d25d8 1-1100
+src/evaluator/evaluator.test.ts
+  s_d7ca59df864df6::t_ee6093277114a9 1-637
+src/evaluator/failure.ts
+  s_d7ca59df864df6::t_334c8ad7efbea3 1-22
+src/evaluator/restricted.ts
+  s_d7ca59df864df6::t_e7d5e5065d605e 1-20
+src/evaluator/stringify.ts
+  s_d7ca59df864df6::t_30a36e46a0aba7 1-47
+src/evaluator/text-template.ts
+  s_d7ca59df864df6::t_1d34462e1cb15f 1-125
+src/evaluator/value-template.ts
+  s_d7ca59df864df6::t_4e0f40341af043 1-260
+src/fix.test.ts
+  s_d7ca59df864df6::t_ad0cff48de4755 1-210
+src/fix.ts
+  s_d7ca59df864df6::t_1dfe849813afd6 1-308
+src/lexer/lexer.test.ts
+  s_d7ca59df864df6::t_b57c74e21186bd 1-805
+src/lexer/spans.ts
+  s_d7ca59df864df6::t_14f9d437c4a226 1-498
+src/lexer/token.ts
+  s_d7ca59df864df6::t_02a051535d5e53 1-70
+src/lexer/tokenize.ts
+  s_d7ca59df864df6::t_ecbfdeb1b4bffe 1-285
+src/linear-regex.test.ts
+  s_d7ca59df864df6::t_7ed54091252148 1-178
+src/lint.test.ts
+  s_d7ca59df864df6::t_979d8a32675c63 1-112
+src/lint.ts
+  s_d7ca59df864df6::t_927e2f88449045 1-204
+src/packaging.test.ts
+  s_d7ca59df864df6::t_cefb7c60936951 1-90
+src/parser/ast.ts
+  s_d7ca59df864df6::t_636fcf2fca5518 1-166
+src/parser/parse.ts
+  s_d7ca59df864df6::t_13aa37ab618ea7 1-752
+src/parser/parser.test.ts
+  s_d7ca59df864df6::t_0141ba77d6dd27 1-860
+src/parser/text-template.ts
+  s_d7ca59df864df6::t_e16c6b28cb6e10 1-127
+src/parser/value-template.ts
+  s_d7ca59df864df6::t_d1381d697e4bf9 1-280
+src/parser/walk.test.ts
+  s_d7ca59df864df6::t_0d4a17c58c6c6a 1-59
+src/parser/walk.ts
+  s_d7ca59df864df6::t_67913a6f6fd846 1-63
+src/properties.test.ts
+  s_d7ca59df864df6::t_926c73cb3dd105 1-143
+src/regex-linear.ts
+  s_d7ca59df864df6::t_0a6b9116057acb 1-10
+src/robustness.test.ts
+  s_d7ca59df864df6::t_b87b68d6ad5d99 1-108
+src/serialisation.test.ts
+  s_d7ca59df864df6::t_8be3f865ee37d1 1-137
+src/serialisation.ts
+  s_d7ca59df864df6::t_43c083dd37f7fd 1-122
+src/temporal-polyfill.ts
+  s_d7ca59df864df6::t_df266aacba721b 1-19
+src/temporal.test.ts
+  s_d7ca59df864df6::t_de88fec7cdcce8 1-51
+src/typecheck/builtins.ts
+  s_d7ca59df864df6::t_6c2ec372d2ecf9 1-82
+src/typecheck/check.test.ts
+  s_d7ca59df864df6::t_fe97df2269ee27 1-556
+src/typecheck/check.ts
+  s_d7ca59df864df6::t_be92d9630896e1 1-974
+src/typecheck/redundancy.test.ts
+  s_d7ca59df864df6::t_7163705789f5df 1-568
+src/typecheck/types.ts
+  s_d7ca59df864df6::t_787b130f332b45 1-149
+tsconfig.json
+  s_d7ca59df864df6::t_0b0aaaf593f55c 1-26
+tsconfig.typecheck.json
+  s_d7ca59df864df6::t_2f296caaa0c617 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "9cdcae967bf9781770a4de012c18ef7b33ee2f36",
+  "prompts": {},
+  "sessions": {
+    "s_d7ca59df864df6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "83ca1d5c-d4f2-443c-8a4c-4c96d76fcd4b",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
