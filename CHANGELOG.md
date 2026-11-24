@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.2.1
+
+No code changes. The first release published from GitHub Actions with a provenance statement.
+
 ## 0.2.0
 
 The first release as `@tavnit-ts/tavnit`. Earlier versions were published under another name (0.1.x); the
