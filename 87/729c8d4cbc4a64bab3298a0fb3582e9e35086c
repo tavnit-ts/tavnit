@@ -1,0 +1,22 @@
+src/builtins/coverage-gaps.test.ts
+  s_fbb1d778415d11::t_422d93bd23d488 1,27-35,37-40
+  s_fbb1d778415d11::t_6895f98e8e8592 36
+src/builtins/crypto.ts
+  s_fbb1d778415d11::t_422d93bd23d488 154
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "87729c8d4cbc4a64bab3298a0fb3582e9e35086c",
+  "prompts": {},
+  "sessions": {
+    "s_fbb1d778415d11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc3c548f-6208-4b1a-ac58-f34135cfb4ba",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
