@@ -1,0 +1,43 @@
+name: Memory (nightly)
+
+# Layer 4 of docs/performance.md. The pull-request gate measures time, not the heap a build
+# retains. This job fails when a case keeps more than its bound after a forced GC.
+
+on:
+  schedule:
+    - cron: '17 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  memory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm run build
+
+      - name: Memory
+        run: node --expose-gc bench/memory.mjs --json nightly-memory.json --enforce | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: memory-${{ github.run_id }}
+          path: nightly-memory.json
+          retention-days: 90
+          if-no-files-found: ignore

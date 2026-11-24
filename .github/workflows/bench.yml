@@ -1,0 +1,98 @@
+name: Benchmark
+
+# Layer 3 of docs/performance.md. The pull request and its merge base are built on one runner and
+# measured alternately, so the runner's own speed cancels out. Report-only until the repository
+# variable TAVNIT_BENCH_ENFORCE is "true".
+
+on:
+  pull_request:
+    paths:
+      - src/**
+      - bench/**
+      - package.json
+      - .github/workflows/bench.yml
+
+permissions:
+  contents: read
+  pull-requests: write
+
+concurrency:
+  group: bench-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  ab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: pnpm/action-setup@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 26
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build the head
+        run: pnpm run build
+
+      - name: Build the merge base
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          merge_base=$(git merge-base "$BASE_SHA" "$HEAD_SHA")
+          echo "merge base: $merge_base"
+          mkdir src-base
+          git archive "$merge_base:src" | tar -x -C src-base
+          cat > tsconfig.base.json <<'JSON'
+          {
+            "extends": "./tsconfig.json",
+            "compilerOptions": { "rootDir": "src-base", "outDir": "dist-base", "incremental": false, "tsBuildInfoFile": null },
+            "include": ["src-base/**/*"],
+            "exclude": ["node_modules", "**/*.test.ts"]
+          }
+          JSON
+          pnpm exec tsc -p tsconfig.base.json
+
+      - name: Alternate base and head
+        env:
+          ENFORCE: ${{ vars.TAVNIT_BENCH_ENFORCE }}
+        run: |
+          flags=""
+          if [ "$ENFORCE" = "true" ]; then flags="--enforce"; fi
+          set +e
+          node bench/ab.mjs dist-base dist --rounds 9 --markdown report.md --json ab.json $flags
+          code=$?
+          set -e
+          cat report.md >> "$GITHUB_STEP_SUMMARY"
+          exit $code
+
+      # A pull request from a fork gets a read-only token, so the comment may fail; the job summary still has the report.
+      - name: Comment on the pull request
+        if: always() && hashFiles('report.md') != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO: ${{ github.repository }}
+          PR: ${{ github.event.pull_request.number }}
+        run: |
+          id=$(gh api "repos/$REPO/issues/$PR/comments" --paginate --jq '.[] | select(.body | contains("<!-- tavnit-bench -->")) | .id' | head -1)
+          if [ -n "$id" ]; then
+            gh api -X PATCH "repos/$REPO/issues/comments/$id" -F body=@report.md
+          else
+            gh pr comment "$PR" --repo "$REPO" --body-file report.md
+          fi
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bench
+          path: ab.json
+          if-no-files-found: ignore

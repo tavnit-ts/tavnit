@@ -1,0 +1,28 @@
+{
+  "bundler": {
+    "name": "vite",
+    "version": "8.3.5"
+  },
+  "entries": {
+    "core (no built-ins)": {
+      "raw": 79277,
+      "gzip": 20051
+    },
+    "core + common built-ins": {
+      "raw": 103277,
+      "gzip": 26097
+    },
+    "core + common + datetime (native Temporal)": {
+      "raw": 114522,
+      "gzip": 28569
+    },
+    "root createEngine (full set)": {
+      "raw": 598151,
+      "gzip": 155126
+    },
+    "builtinFilterNames": {
+      "raw": 1146,
+      "gzip": 703
+    }
+  }
+}

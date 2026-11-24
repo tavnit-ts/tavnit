@@ -1,0 +1,141 @@
+{
+  "name": "@tavnit-ts/tavnit",
+  "version": "0.2.0",
+  "description": "Constrained expression evaluator with text-embedding and value templates",
+  "homepage": "https://github.com/tavnit-ts/tavnit#readme",
+  "bugs": {
+    "url": "https://github.com/tavnit-ts/tavnit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tavnit-ts/tavnit.git"
+  },
+  "license": "ISC",
+  "author": "Nikolay Khaustov (https://github.com/nhaustov)",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./host": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js"
+    },
+    "./core": {
+      "types": "./dist/core.d.ts",
+      "import": "./dist/core.js"
+    },
+    "./builtins": {
+      "types": "./dist/categories/index.d.ts",
+      "import": "./dist/categories/index.js"
+    },
+    "./builtins/types": {
+      "types": "./dist/categories/types.d.ts",
+      "import": "./dist/categories/types.js"
+    },
+    "./builtins/strings": {
+      "types": "./dist/categories/strings.d.ts",
+      "import": "./dist/categories/strings.js"
+    },
+    "./builtins/regex": {
+      "types": "./dist/categories/regex.d.ts",
+      "import": "./dist/categories/regex.js"
+    },
+    "./builtins/collections": {
+      "types": "./dist/categories/collections.d.ts",
+      "import": "./dist/categories/collections.js"
+    },
+    "./builtins/objects": {
+      "types": "./dist/categories/objects.d.ts",
+      "import": "./dist/categories/objects.js"
+    },
+    "./builtins/yaml": {
+      "types": "./dist/categories/yaml.d.ts",
+      "import": "./dist/categories/yaml.js"
+    },
+    "./builtins/encoding": {
+      "types": "./dist/categories/encoding.d.ts",
+      "import": "./dist/categories/encoding.js"
+    },
+    "./builtins/crypto": {
+      "types": "./dist/categories/crypto.d.ts",
+      "import": "./dist/categories/crypto.js"
+    },
+    "./builtins/datetime": {
+      "types": "./dist/categories/datetime.d.ts",
+      "import": "./dist/categories/datetime.js"
+    },
+    "./regex-linear": {
+      "types": "./dist/regex-linear.d.ts",
+      "import": "./dist/regex-linear.js"
+    },
+    "./temporal-polyfill": {
+      "types": "./dist/temporal-polyfill.d.ts",
+      "import": "./dist/temporal-polyfill.js"
+    },
+    "./internal": {
+      "types": "./dist/internal.d.ts",
+      "import": "./dist/internal.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=24"
+  },
+  "files": [
+    "dist",
+    "docs/skills",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsc && node scripts/build-docs.mjs",
+    "dev": "tsc --watch",
+    "test": "vitest run --passWithNoTests",
+    "test:watch": "vitest",
+    "bench": "tsc && node bench/run.mjs",
+    "bench:noise": "tsc && node bench/noise.mjs",
+    "test:coverage": "vitest run --coverage --passWithNoTests",
+    "lint": "biome lint --error-on-warnings .",
+    "lint:fix": "biome lint --write .",
+    "clean": "rm -rf dist",
+    "size": "tsc && node scripts/check-size.mjs",
+    "playground": "tsc && node playground/build.mjs",
+    "gen:names": "tsc && node scripts/gen-builtin-names.mjs",
+    "check": "pnpm run lint && pnpm run build && pnpm run test",
+    "prepublishOnly": "pnpm run build"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.6.7",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "fast-check": "^4.10.2",
+    "tinybench": "^6.2.3",
+    "typescript": "^7.0.2",
+    "vitest": "^5.1.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {
+    "@js-temporal/polyfill": "^0.5.1",
+    "re2js": "^2.10.0",
+    "safe-regex2": "^5.1.2",
+    "yaml": "^2.9.1"
+  },
+  "packageManager": "pnpm@12.18.0",
+  "keywords": [
+    "template",
+    "expression",
+    "evaluator",
+    "sandbox",
+    "templating",
+    "interpolation",
+    "yaml"
+  ]
+}

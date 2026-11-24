@@ -1,0 +1,8 @@
+node_modules/
+dist/
+coverage/
+playground/dist/
+docs/UserGuide.md
+*.tsbuildinfo
+.DS_Store
+.env*

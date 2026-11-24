@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tavnit playground</title>
+<style>
+  :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
+  body { margin: 0 auto; max-width: 56rem; padding: 1rem; }
+  label { display: block; font-weight: 600; margin: 1rem 0 0.25rem; }
+  textarea { box-sizing: border-box; width: 100%; font: 0.9rem ui-monospace, monospace; padding: 0.5rem; }
+  .row { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; margin-top: 1rem; }
+  .row label { display: inline; margin: 0; font-weight: 400; }
+  pre { padding: 0.75rem; border: 1px solid; border-radius: 4px; overflow: auto; white-space: pre-wrap; margin: 0; }
+  pre.error { border-color: #c0392b; color: #c0392b; }
+</style>
+</head>
+<body>
+<h1>Tavnit playground</h1>
+<label for="source">Expression or text template</label>
+<textarea id="source" rows="5" spellcheck="false">items | filter(i => i.qty > 0) | map(i => i.qty * i.price) | sum</textarea>
+<label for="context">Context (JSON)</label>
+<textarea id="context" rows="8" spellcheck="false">{
+  "items": [
+    { "qty": 2, "price": 10 },
+    { "qty": 0, "price": 99 },
+    { "qty": 1, "price": 5.5 }
+  ]
+}</textarea>
+<div class="row">
+  <label><input type="radio" name="mode" value="expression" checked> Expression</label>
+  <label><input type="radio" name="mode" value="text"> Text template (<code>${{ }}</code>, <code>${% %}</code>)</label>
+  <label><input type="checkbox" id="strict"> strict</label>
+</div>
+<label for="result">Result</label>
+<pre id="result"></pre>
+<script type="module">
+  import { createEngine, ExpressionError } from "../dist/index.js";
+
+  const $ = (id) => document.getElementById(id);
+  const engines = new Map();
+  const engineFor = (strict) => {
+    if (!engines.has(strict)) engines.set(strict, createEngine({ strict }));
+    return engines.get(strict);
+  };
+
+  async function run() {
+    const out = $("result");
+    out.className = "";
+    let context;
+    try {
+      context = JSON.parse($("context").value || "{}");
+    } catch (error) {
+      out.className = "error";
+      out.textContent = `Context is not valid JSON: ${error.message}`;
+      return;
+    }
+    const engine = engineFor($("strict").checked);
+    const mode = document.querySelector('input[name="mode"]:checked').value;
+    try {
+      const value = mode === "text"
+        ? await engine.render($("source").value, context)
+        : await engine.evaluate($("source").value, context);
+      out.textContent = mode === "text" ? value : JSON.stringify(value, null, 2) ?? "undefined";
+    } catch (error) {
+      out.className = "error";
+      out.textContent = error instanceof ExpressionError ? error.format() : String(error);
+    }
+  }
+
+  for (const element of document.querySelectorAll("textarea, input")) {
+    element.addEventListener("input", run);
+  }
+  run();
+</script>
+</body>
+</html>
