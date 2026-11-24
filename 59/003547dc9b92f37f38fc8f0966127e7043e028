@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_d7ca59df864df6::t_d603164a97e8a4 3-6
+package.json
+  s_d7ca59df864df6::t_ee7db09f8f1c6d 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "59003547dc9b92f37f38fc8f0966127e7043e028",
+  "prompts": {},
+  "sessions": {
+    "s_d7ca59df864df6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "83ca1d5c-d4f2-443c-8a4c-4c96d76fcd4b",
+        "model": "unknown"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
