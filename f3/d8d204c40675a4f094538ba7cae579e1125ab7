@@ -1,0 +1,21 @@
+CHANGELOG.md
+  s_fbb1d778415d11::t_6e6dd7e2214023 5-9
+src/builtins/crypto.ts
+  s_fbb1d778415d11::t_97a4a37d4fcca7 146-150,152-155
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "f3d8d204c40675a4f094538ba7cae579e1125ab7",
+  "prompts": {},
+  "sessions": {
+    "s_fbb1d778415d11": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "dc3c548f-6208-4b1a-ac58-f34135cfb4ba",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
