@@ -2,8 +2,11 @@
 
 ## Unreleased
 
-No change to the package. CI and the publish workflow now lint the packed tarball with publint and
-`@arethetypeswrong/cli` before a release.
+- `randomString()` picks characters without modulo bias: a charset whose length does not divide 256
+  (the default one has 66 characters) favoured its first characters. It now samples by rejection.
+
+CI and the publish workflow now lint the packed tarball with publint and `@arethetypeswrong/cli`
+before a release.
 
 ## 0.2.2
 

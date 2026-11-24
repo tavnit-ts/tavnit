@@ -143,10 +143,16 @@ function randomString(v: Value, charset: Value = null): Value {
   if (cs.length === 0) {
     throw new EvaluationError("randomString() charset must not be empty");
   }
-  const bytes = randomBytes(v);
+  // Rejection sampling over 32-bit words: words at or above `span * cs.length` are dropped, and the
+  // rest split into `cs.length` equal runs of `span`, so every character is equally likely (a plain
+  // `word % cs.length` favours the first characters whenever the length does not divide 2^32).
+  const span = Math.floor(2 ** 32 / cs.length);
+  const limit = span * cs.length;
   let result = "";
-  for (const byte of bytes) {
-    result += cs[byte % cs.length];
+  while (result.length < v) {
+    for (const word of new Uint32Array(randomBytes((v - result.length) * 4).buffer)) {
+      if (word < limit && result.length < v) result += cs[Math.floor(word / span)];
+    }
   }
   return result;
 }
