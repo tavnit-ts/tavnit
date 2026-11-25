@@ -1,7 +1,7 @@
 ### Strings
 
 <!-- contents -->
-**Contents:** `includes`, `split`, `toUpperCase`, `squish`, `remove`, `append`, `truncate`, `chunks`, `stripNewlines`, `indent`, `matches`, `createEngine`, `replace`, `replaceAll`, `trim`, `padStart`
+**Contents:** `includes`, `split`, `toUpperCase`, `squish`, `remove`, `append`, `truncate`, `substring`, `left`, `chunks`, `stripNewlines`, `indent`, `matches`, `createEngine`, `replace`, `replaceAll`, `trim`, `padStart`
 <!-- /contents -->
 
 `includes(str, substr)`, `startsWith(str, prefix)`, `endsWith(str, suffix)`.
@@ -36,6 +36,36 @@ never contains a lone surrogate and can be one unit shorter than `n`:
 
 ```tavnit
 "a😀b" | truncate(2)   // → "a" — the emoji is dropped, not cut in half
+```
+
+`substring(str, start, end?)` — the characters from `start` (inclusive) to `end`
+(exclusive); `end` defaults to the length. Indexes are truncated to integers and
+count UTF-16 code units, so an emoji takes two. A negative index counts from the end
+and one past either end is clamped, as in [`slice`](builtins-collections.md#first-last-slice):
+the result is `""` when `start` is not before `end`, never an error. `null` for `start`
+or `end` means the default. Like `truncate`, a cut that would fall inside a surrogate
+pair drops the dangling half, at either edge. A non-string `str` or a non-number index throws:
+
+```tavnit
+"hello world" | substring(6)       // → "world"
+"hello world" | substring(0, 5)    // → "hello"
+"hello" | substring(-3)            // → "llo"
+"hello" | substring(-3, -1)        // → "ll"
+"hello" | substring(9)             // → ""
+"a😀b" | substring(1, 2)           // → "" — half an emoji is dropped
+```
+
+`left(str, n)` — the first `n` characters; `right(str, n)` — the last `n`.
+`n` is truncated to an integer and counted in code units. Unlike `truncate`, a
+negative `n` gives `""`, and an `n` over the length gives the whole string.
+A cut inside a surrogate pair drops the dangling half, so the result can be one unit shorter:
+
+```tavnit
+"hello" | left(2)      // → "he"
+"hello" | right(2)     // → "lo"
+"hello" | right(0)     // → ""
+"hello" | left(-1)     // → ""
+"a😀b" | right(2)      // → "b" — the emoji is dropped, not cut in half
 ```
 
 `chunks(str, maxLen, separators?)` — split `str` into an array of substrings each no longer than `maxLen` characters. Tries each separator in `separators` (default `["\n\n", "\n"]`) in priority order: finds the last occurrence of that separator before the limit, splits there (consuming the separator), and repeats. Falls back to a hard character split when no separator fits. Returns `[]` for an empty string:

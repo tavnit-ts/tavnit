@@ -339,6 +339,87 @@ describe("padStart / padEnd", () => {
   it("padEnd throws on null length", async () => await throws('padEnd("hi", null)'));
 });
 
+// ── substring / left / right ─────────────────────────────────────────────────
+
+describe("substring / left / right", () => {
+  it("substring takes start and optional end", async () => {
+    expect(await ev('substring("hello world", 6)')).toBe("world");
+    expect(await ev('substring("hello world", 0, 5)')).toBe("hello");
+    expect(await ev('substring("hello", 1, 1)')).toBe("");
+  });
+  it("substring works as a pipe step", async () => {
+    expect(await ev('"hello" | substring(1, 3)')).toBe("el");
+    expect(await ev('"hello" | left(2) | right(1)')).toBe("e");
+  });
+  it("substring counts a negative index from the end", async () => {
+    expect(await ev('substring("hello", -3)')).toBe("llo");
+    expect(await ev('substring("hello", -3, -1)')).toBe("ll");
+    expect(await ev('substring("hello", 0, -1)')).toBe("hell");
+    expect(await ev('substring("hello", -99, 2)')).toBe("he");
+  });
+  it("substring returns an empty string out of range", async () => {
+    expect(await ev('substring("hello", 9)')).toBe("");
+    expect(await ev('substring("hello", 3, 1)')).toBe("");
+    expect(await ev('substring("hello", 0, 99)')).toBe("hello");
+    expect(await ev('substring("", 0, 3)')).toBe("");
+  });
+  it("substring truncates non-integers and treats null as the default", async () => {
+    expect(await ev('substring("hello", 1.9, 3.9)')).toBe("el");
+    expect(await ev('substring("hello", null, 2)')).toBe("he");
+    expect(await ev('substring("hello", 1, null)')).toBe("ello");
+  });
+  it("substring handles Cyrillic", async () => {
+    expect(await ev('substring("Привет, мир", 0, 6)')).toBe("Привет");
+    expect(await ev('"Привет, мир" | right(3)')).toBe("мир");
+    expect(await ev('"Привет" | left(3)')).toBe("При");
+  });
+  it("substring, left and right never split a surrogate pair", async () => {
+    expect(await ev('substring("a😀b", 0, 2)')).toBe("a");
+    expect(await ev('substring("a😀b", 2)')).toBe("b");
+    expect(await ev('substring("a😀b", 1, 3)')).toBe("😀");
+    expect(await ev('substring("a😀b", 1, 2)')).toBe("");
+    expect(await ev('left("a😀b", 2)')).toBe("a");
+    expect(await ev('left("a😀b", 3)')).toBe("a😀");
+    expect(await ev('right("a😀b", 2)')).toBe("b");
+    expect(await ev('right("a😀b", 3)')).toBe("😀b");
+    expect(await ev('right("😀", 1)')).toBe("");
+  });
+  it("left and right take the first and the last n characters", async () => {
+    expect(await ev('left("hello", 3)')).toBe("hel");
+    expect(await ev('right("hello", 3)')).toBe("llo");
+    expect(await ev('"hello" | left(3)')).toBe("hel");
+    expect(await ev('"hello" | right(3)')).toBe("llo");
+    expect(await ev('left("hello", 3.9)')).toBe("hel");
+  });
+  it("left and right clamp and give empty for a non-positive n", async () => {
+    expect(await ev('left("hi", 10)')).toBe("hi");
+    expect(await ev('right("hi", 10)')).toBe("hi");
+    expect(await ev('left("hi", 0)')).toBe("");
+    expect(await ev('right("hi", 0)')).toBe("");
+    expect(await ev('left("hi", -1)')).toBe("");
+    expect(await ev('right("hi", -1)')).toBe("");
+    expect(await ev('left("", 3)')).toBe("");
+    expect(await ev('right("", 3)')).toBe("");
+  });
+  it("throws on a non-string subject", async () => {
+    for (const expr of ["substring(1, 0)", "substring(null, 1)", "left(5, 1)", "left(null, 1)", "right(true, 1)", "right([1], 1)"]) {
+      await throws(expr);
+    }
+    await expect(ev("left(5, 1)")).rejects.toThrow("left() requires a string, got number");
+    await expect(ev("substring(null, 1)")).rejects.toThrow("substring() requires a string, got null");
+  });
+  it("throws on a non-number index", async () => {
+    await throws('substring("hello", "1")');
+    await throws('substring("hello", 1, "2")');
+    await throws('left("hello", "2")');
+    await throws('left("hello", null)');
+    await throws('right("hello", "2")');
+    await throws('right("hello", null)');
+    await expect(ev('substring("hello", "1")')).rejects.toThrow("substring() requires a number for start, got string");
+    await expect(ev('right("hello", null)')).rejects.toThrow("right() requires a number, got null");
+  });
+});
+
 // ── replace / replaceAll / remove / append / truncate / indent ────────────────
 
 describe("replace / replaceAll / remove / append / truncate / indent", () => {

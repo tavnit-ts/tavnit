@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- New string built-ins `substring(str, start, end?)`, `left(str, n)` and `right(str, n)`. Indexes count UTF-16
+  code units; a negative `substring` index counts from the end, out-of-range ones clamp, and a cut never leaves half
+  a surrogate pair.
 - `randomString()` picks characters without modulo bias: a charset whose length does not divide 256
   (the default one has 66 characters) favoured its first characters. It now samples by rejection.
 

@@ -111,6 +111,55 @@ function truncate(v: Value, n: Value): Value {
   return last >= 0xd800 && last <= 0xdbff ? out.slice(0, -1) : out;
 }
 
+const isHigh = (c: number): boolean => c >= 0xd800 && c <= 0xdbff;
+const isLow = (c: number): boolean => c >= 0xdc00 && c <= 0xdfff;
+
+/** An index of `str` for a cut: truncated toward zero, a negative one counted from the end, clamped to `[0, length]`. */
+function cutIndex(n: number, length: number): number {
+  const i = Number.isNaN(n) ? 0 : Math.trunc(n);
+  return i < 0 ? Math.max(0, length + i) : Math.min(i, length);
+}
+
+/** `str.slice(start, end)` on clamped indexes, dropping a half pair a cut would leave at either edge. */
+function sliceWhole(str: string, start: number, end: number): string {
+  if (start > 0 && isLow(str.charCodeAt(start)) && isHigh(str.charCodeAt(start - 1))) start++;
+  if (end < str.length && isHigh(str.charCodeAt(end - 1)) && isLow(str.charCodeAt(end))) end--;
+  return start >= end ? "" : str.slice(start, end);
+}
+
+function substring(v: Value, start: Value, end: Value = null): Value {
+  const str = ensureString(v, "substring");
+  if (typeof start !== "number" && start !== null) {
+    throw new EvaluationError(`substring() requires a number for start, got ${typeName(start)}`);
+  }
+  if (typeof end !== "number" && end !== null) {
+    throw new EvaluationError(`substring() requires a number for end, got ${typeName(end)}`);
+  }
+  return sliceWhole(
+    str,
+    start === null ? 0 : cutIndex(start, str.length),
+    end === null ? str.length : cutIndex(end, str.length),
+  );
+}
+
+/** The count of `left` / `right`: truncated toward zero, a negative or NaN one is 0, clamped to the length. */
+function countOf(n: Value, name: string, length: number): number {
+  if (typeof n !== "number") {
+    throw new EvaluationError(`${name}() requires a number, got ${typeName(n)}`);
+  }
+  return Number.isNaN(n) ? 0 : Math.min(Math.max(Math.trunc(n), 0), length);
+}
+
+function left(v: Value, n: Value): Value {
+  const str = ensureString(v, "left");
+  return sliceWhole(str, 0, countOf(n, "left", str.length));
+}
+
+function right(v: Value, n: Value): Value {
+  const str = ensureString(v, "right");
+  return sliceWhole(str, str.length - countOf(n, "right", str.length), str.length);
+}
+
 function stripNewlines(v: Value): Value {
   return ensureString(v, "stripNewlines").replace(/\r?\n|\r/g, "");
 }
@@ -189,6 +238,9 @@ export const stringBuiltins: Record<string, FilterFn | ContextFilterFn> = {
   remove,
   append,
   truncate,
+  substring,
+  left,
+  right,
   stripNewlines,
   indent,
   chunks,

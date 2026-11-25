@@ -50,7 +50,7 @@ export const BUILTIN_SIGNATURES: Readonly<Record<string, BuiltinSignature>> = {
 
   trim: string(), trimStart: string(), trimEnd: string(), squish: string(),
   toUpperCase: string(), toLowerCase: string(), padStart: string(), padEnd: string(),
-  truncate: string(), replace: string(), replaceAll: string(), remove: string(), append: string(),
+  truncate: string(), substring: string(), left: string(), right: string(), replace: string(), replaceAll: string(), remove: string(), append: string(),
   includes: boolean(), startsWith: boolean(), endsWith: boolean(),
   split: { rejectsNull: true, result: () => arrayOf(STRING) },
 

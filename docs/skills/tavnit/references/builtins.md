@@ -80,6 +80,9 @@ All built-ins are callable as plain functions (`fn(value, args)`) or via pipe
 | [`remove`](builtins-strings.md#strings) | `remove(str, substr)` → `string` — remove all occurrences of `substr` | |
 | [`append`](builtins-strings.md#strings) | `append(str, suffix)` → `string` — concatenate `suffix` to `str` | |
 | [`truncate`](builtins-strings.md#strings) | `truncate(str, n)` → `string` — limit to `n` code units, never splitting a surrogate pair | |
+| [`substring`](builtins-strings.md#strings) | `substring(str, start, end?)` → `string` — characters from `start` to `end` (exclusive); negative counts from the end, out of range clamps; never splits a surrogate pair | `""` when `start >= end`; `null` index is the default |
+| [`left`](builtins-strings.md#strings) | `left(str, n)` → `string` — the first `n` characters | `""` for `n <= 0`; never splits a surrogate pair |
+| [`right`](builtins-strings.md#strings) | `right(str, n)` → `string` — the last `n` characters | `""` for `n <= 0`; never splits a surrogate pair |
 | [`chunks`](builtins-strings.md#strings) | `chunks(str, maxLen, separators?)` → `string[]` — split into pieces of at most `maxLen` characters, preferring the given separators | `[]` for `""` |
 | [`indent`](builtins-strings.md#strings) | `indent(str, n)` → `string` — prepend `n` spaces to each line | |
 | [`stripNewlines`](builtins-strings.md#strings) | `stripNewlines(str)` → `string` — remove all newline characters | |

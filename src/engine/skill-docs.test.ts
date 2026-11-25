@@ -309,6 +309,12 @@ describe.skipIf(referenceFiles.length === 0)("skill references — documented ex
     expect(await evaluate('"a" | replace("a", "$&$&")')).toBe("aa");
     expect(await evaluate('"hello" | truncate(-1)')).toBe("hell");
     expect(await evaluate('"a😀b" | truncate(2)')).toBe("a");
+    expect(await evaluate('"hello world" | substring(6)')).toBe("world");
+    expect(await evaluate('"hello" | substring(-3, -1)')).toBe("ll");
+    expect(await evaluate('"hello" | substring(9)')).toBe("");
+    expect(await evaluate('"a😀b" | substring(1, 2)')).toBe("");
+    expect(await evaluate('"hello" | left(-1)')).toBe("");
+    expect(await evaluate('"a😀b" | right(2)')).toBe("b");
     await expect(evaluate('matches("ab", "(?<=a)b")')).rejects.toThrow(/lookbehind/);
     await expect(evaluate('matches("a", "[")')).rejects.toThrow(/Invalid regular expression/);
   });
