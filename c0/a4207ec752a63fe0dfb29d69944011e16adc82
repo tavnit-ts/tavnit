@@ -1,0 +1,36 @@
+src/builtins/builtins.test.ts
+  s_924e9c5cdf91ec::t_48f554d17f7476 405-406
+  s_924e9c5cdf91ec::t_b0daebbebdb112 342-404,407-422
+CHANGELOG.md
+  s_924e9c5cdf91ec::t_b0daebbebdb112 5-7
+src/engine/skill-docs.test.ts
+  s_924e9c5cdf91ec::t_b0daebbebdb112 312-317
+src/builtins/strings.ts
+  s_924e9c5cdf91ec::t_0c89daf0a893de 114-162,241-243
+docs/skills/tavnit/references/builtins-strings.md
+  s_924e9c5cdf91ec::t_b0daebbebdb112 41-69
+  s_924e9c5cdf91ec::t_d21bf112ef5a4e 4
+  s_924e9c5cdf91ec::t_d1b601a1540af2 70
+docs/skills/tavnit/references/builtins.md
+  s_924e9c5cdf91ec::t_b0daebbebdb112 83-85
+src/builtins/names.ts
+  s_924e9c5cdf91ec::t_48f554d17f7476 47-49
+src/typecheck/builtins.ts
+  s_924e9c5cdf91ec::t_0c89daf0a893de 53
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "c0a4207ec752a63fe0dfb29d69944011e16adc82",
+  "prompts": {},
+  "sessions": {
+    "s_924e9c5cdf91ec": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "778b9c18-5ebc-4b5e-addc-d14a3584cd9c",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
