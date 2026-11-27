@@ -1,0 +1,19 @@
+src/builtins/builtins.test.ts
+  s_7ada60b568de16::t_30879a24bffb9e 371-373,407-410
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "0546e90945c50160f69bb5d00c44b05911ac91c2",
+  "prompts": {},
+  "sessions": {
+    "s_7ada60b568de16": {
+      "agent_id": {
+        "tool": "codex",
+        "id": "01a21c8e-42ec-70f3-b0d0-69cf0a846b91",
+        "model": "gpt-6-sol"
+      },
+      "human_author": "Nikolay Khaustov <nhaustov@gmail.com>"
+    }
+  }
+}
