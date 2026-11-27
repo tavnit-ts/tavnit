@@ -368,6 +368,9 @@ describe("substring / left / right", () => {
     expect(await ev('substring("hello", null, 2)')).toBe("he");
     expect(await ev('substring("hello", 1, null)')).toBe("ello");
   });
+  it("substring treats NaN as the first index", async () => {
+    expect(await ev('substring("hello", start, 2)', { start: Number.NaN })).toBe("he");
+  });
   it("substring handles Cyrillic", async () => {
     expect(await ev('substring("Привет, мир", 0, 6)')).toBe("Привет");
     expect(await ev('"Привет, мир" | right(3)')).toBe("мир");
@@ -400,6 +403,10 @@ describe("substring / left / right", () => {
     expect(await ev('right("hi", -1)')).toBe("");
     expect(await ev('left("", 3)')).toBe("");
     expect(await ev('right("", 3)')).toBe("");
+  });
+  it("left and right treat NaN as zero", async () => {
+    expect(await ev('left("hello", count)', { count: Number.NaN })).toBe("");
+    expect(await ev('right("hello", count)', { count: Number.NaN })).toBe("");
   });
   it("throws on a non-string subject", async () => {
     for (const expr of ["substring(1, 0)", "substring(null, 1)", "left(5, 1)", "left(null, 1)", "right(true, 1)", "right([1], 1)"]) {
